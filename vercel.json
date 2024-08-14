@@ -1,26 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "vercel_wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "maxLambdaSize": "60mb"
-      }
-    },
-    {
-      "src": "staticfiles/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/vercel_wsgi.application"
-    }
-  ]
+    "builds":[{
+        "src":"medical_project/wsgi.py",
+        "use":"@vercel/python",
+        "config":{"maxLambdaSize":"15mb","runtime":"python3.12.3"}
+    }],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"medical_project/wsgi.py"
+        }
+    ]
 }
